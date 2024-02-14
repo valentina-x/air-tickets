@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier", "next"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["prettier"],
+  "globals": {
+    "NodeListOf": "readonly"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "semi": ["error", "never"]
+      }
+    }
+  ],
+  "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+  }
+}

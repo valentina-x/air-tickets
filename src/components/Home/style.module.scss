@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+
+.home {
+	width: 90%;
+	max-width: remHandler(1050);
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 0fr 0fr 1fr;
+	grid-template-areas:
+		"header header"
+		"sidebar filter"
+		"sidebar tickets";
+	margin: vhHandler(50) auto;
+
+
+	& p {
+		font-size: remHandler(15);
+	}
+
+	@media screen and (max-width: 1080px) {
+		margin-top: remHandler(24);
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"header"
+			"filter"
+			"sidebar"
+			"tickets"
+	}
+
+	@media screen and (max-width: 550px) {
+		width: 96%;
+	}
+}

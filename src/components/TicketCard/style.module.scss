@@ -1,0 +1,85 @@
+@import "../../styles/variables";
+
+.ticket {
+	width: 100%;
+	height: remHandler(164);
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	background-color: $light-lavender;
+	margin-bottom: remHandler(30);
+	border-radius: remHandler(10);
+	color: $purple;
+	padding: 0 remHandler(34) remHandler(30);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&_fixheight {
+			height: remHandler(47);
+		}
+	}
+
+	&__price {
+		font-size: remHandler(32);
+		font-family: $inter-b;
+	}
+
+	&__logo {
+		width: auto;
+		max-width: remHandler(180);
+		height: 100%;
+
+		& img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			display: block;
+		}
+	}
+
+	&__info {
+		width: remHandler(170);
+		font-size: remHandler(16);
+		font-family: $inter-m;
+		margin-top: remHandler(25);
+
+		& span {
+			display: block;
+			color: $lavender;
+			margin-bottom: remHandler(9);
+		}
+
+		&:last-child {
+			padding-left: remHandler(31);
+		}
+	}
+
+	@media screen and (max-width: 550px) {
+		padding: 0 remHandler(20) remHandler(30);
+
+		&__row {
+			&_fixheight {
+				height: remHandler(47);
+			}
+		}
+
+		&__logo {
+			max-width: remHandler(120);
+		}
+
+		&__info {
+			width: auto;
+
+			&:last-child {
+				padding-left: 0;
+			}
+		}
+	}
+}

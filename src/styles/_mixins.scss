@@ -1,0 +1,10 @@
+@mixin title($size) {
+	color: $purple;
+	font-size: remHandler($size);
+	font-family: $inter-b;
+	font-weight: normal;
+}
+
+@mixin container() {
+	width: remHandler(1050);
+}

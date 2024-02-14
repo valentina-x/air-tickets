@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.tickets {
+	width: remHandler(727);
+	grid-area: tickets;
+	min-height: 0;
+	overflow: auto;
+
+	@media screen and (max-width: 1080px) {
+		width: 100%;
+	}
+}

@@ -1,0 +1,17 @@
+@import "_reset";
+@import "_variables";
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	font-size: remHandler(16);
+	font-family: $inter, Arial, Helvetica, sans-serif;
+}

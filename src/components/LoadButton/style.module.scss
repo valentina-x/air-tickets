@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.loadbutton {
+	width: 100%;
+	height: remHandler(62);
+	background-color: $purple;
+	font-size: remHandler(24);
+	color: $white;
+	font-family: $inter-b;
+	margin-top: remHandler(15);
+	cursor: pointer;
+	border: none;
+	border-radius: remHandler(10);
+	transition: all 0.6s;
+
+	&:hover {
+		background-color: lighten($purple, 10%);
+	}
+}

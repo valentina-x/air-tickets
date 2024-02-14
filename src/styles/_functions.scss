@@ -1,0 +1,15 @@
+@function vwHandler($size) {
+	$remSize: calc($size/19.2);
+	@return #{$remSize}vw;
+}
+
+@function vhHandler($size) {
+	$remSize: calc($size/10.8);
+	@return #{$remSize}vh;
+}
+
+
+@function remHandler($size) {
+	$remSize: calc($size/16);
+	@return #{$remSize}rem;
+}
