@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
-import { RootState } from '../../store/store';
-import { useSelector } from 'react-redux';
 import { ITicket } from '../TicketCard/ITicket';
 import CustomList from '../CustomList/CustomList';
 import ArrowIMG from '../../assets/arrow.png';
 import { useOnClickOutside } from 'usehooks-ts';
+import { useAppSelector } from '../../hooks/hooks';
+import { selectTickets } from '../../features/selectors/ticketsSelectors';
+import { selectFilters } from '../../features/selectors/filtersSelectors';
 
 interface propsList {
   label: string;
@@ -16,8 +17,8 @@ interface propsList {
 }
 
 export const Sidebar: React.FC = () => {
-  const tickets = useSelector((state: RootState) => state.tickets.tickets);
-  const filters = useSelector((state: RootState) => state.filters);
+  const tickets = useAppSelector(selectTickets);
+  const filters = useAppSelector(selectFilters);
 
   // состояние для кол-ва пересадок и компаний
   const [stops, setStops] = useState<string[]>([]);

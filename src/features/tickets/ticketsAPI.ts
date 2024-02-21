@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { ITicket } from '../../components/TicketCard/ITicket';
 
-export const fetchTickets = async () => {
+export const fetchTickets = async (): Promise<{
+  data: ITicket[];
+}> => {
   const apiUrl = './db.json';
 
   try {
@@ -14,10 +16,7 @@ export const fetchTickets = async () => {
     const data: ITicket[] = response.data.tickets;
 
     return { data };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    console.error('Ошибка загрузки билетов:', error.message);
-
+  } catch (error) {
     throw new Error('Ошибка загрузки билетов');
   }
 };

@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { fetchTicketsAsync } from '../../features/tickets/ticketsAsyncThunk';
 import Header from '../../components/Header/Header';
 import styles from './style.module.scss';
 import Filter from '../../components/TariffSelector/TariffSelector';
 import Tickets from '../Tickets/Tickets';
-import { AppDispatch } from '../../store/store';
 import { Sidebar } from '../Sidebar/Sidebar';
+import { useAppDispatch } from '../../hooks/hooks';
 
 const Home: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchTicketsAsync());

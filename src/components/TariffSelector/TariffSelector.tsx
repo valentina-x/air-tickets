@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
 import styles from './style.module.scss';
-import { AppDispatch, RootState } from '../../store/store';
 import { setTariff } from '../../features/filters/filterSlice';
 import { useCallback } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { selectFilters } from '../../features/selectors/filtersSelectors';
 
 export default function Filter() {
-  const dispatch: AppDispatch = useDispatch();
-  const filters = useSelector((state: RootState) => state.filters);
+  const dispatch = useAppDispatch();
+  const filters = useAppSelector(selectFilters);
 
   const handleTariffChange = useCallback(
     (tariff: string) => {

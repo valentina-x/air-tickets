@@ -1,16 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
 import Ticket from '../TicketCard/TicketCard';
 import { LoadButton } from '../LoadButton/LoadButton';
 import { useCallback, useState } from 'react';
 import { ITicket } from '../TicketCard/ITicket';
 import { sortTickets } from '../../features/utils/utils';
 import styles from './style.module.scss';
+import { useAppSelector } from '../../hooks/hooks';
+import { selectTickets } from '../../features/selectors/ticketsSelectors';
+import { selectFilters } from '../../features/selectors/filtersSelectors';
 
 const Tickets: React.FC = () => {
-  const tickets = useSelector((state: RootState) => state.tickets.tickets);
-  const filters = useSelector((state: RootState) => state.filters);
+  const tickets = useAppSelector(selectTickets);
+  const filters = useAppSelector(selectFilters);
   const [displayedTickets, setDisplayedTickets] = useState<number>(3);
 
   const sortedTickets: ITicket[] = sortTickets(tickets, filters);

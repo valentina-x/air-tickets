@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SET_STOPS, SET_AIRLINES, SET_TARIFF } from '../../types/filterActionTypes';
 import { FiltersState } from '../../types/IFiltersState';
 
 const initialState: FiltersState = {
@@ -24,19 +23,6 @@ const filterSlice = createSlice({
   },
 });
 
-export const setStops = (stops: number[]) => ({
-  type: SET_STOPS,
-  payload: stops,
-});
-
-export const setAirlines = (airlines: string[]) => ({
-  type: SET_AIRLINES,
-  payload: airlines,
-});
-
-export const setTariff = (tariff: string) => ({
-  type: SET_TARIFF,
-  payload: tariff,
-});
+export const { setStops, setAirlines, setTariff } = filterSlice.actions;
 
 export default filterSlice.reducer;

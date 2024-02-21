@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import OkIMG from '../../assets/ok.png';
-import { AppDispatch, RootState } from '../../store/store';
-import { useDispatch, useSelector } from 'react-redux';
 import { setAirlines, setStops } from '../../features/filters/filterSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { selectFilters } from '../../features/selectors/filtersSelectors';
 
 interface CustomListProps {
   label: string;
@@ -14,19 +14,23 @@ interface CustomListProps {
 }
 
 const CustomList: React.FC<CustomListProps> = ({ ...props }) => {
-  const filters = useSelector((state: RootState) => state.filters);
-  const dispatch: AppDispatch = useDispatch();
+  const filters = useAppSelector(selectFilters);
+  const dispatch = useAppDispatch();
 
   const handleFilterChange = (item: string | number) => {
-    const normalizedItem = typeof item === 'string' ? item.normalize() : item;
+    let normalizedItem: string | number = '';
 
-    if (props.label === 'company') {
-      const updatedAirlines = filters.airlines.includes(normalizedItem)
-        ? filters.airlines.filter((airline: string) => airline !== normalizedItem)
-        : [...filters.airlines, normalizedItem];
+    if (typeof item === 'string') {
+      normalizedItem = item.normalize();
+      if (props.label === 'company') {
+        const updatedAirlines = filters.airlines.includes(normalizedItem)
+          ? filters.airlines.filter((airline: string) => airline !== normalizedItem)
+          : [...filters.airlines, normalizedItem];
 
-      dispatch(setAirlines(updatedAirlines));
+        dispatch(setAirlines(updatedAirlines));
+      }
     } else {
+      normalizedItem = item;
       const updatedStops = filters.stops.includes(normalizedItem)
         ? filters.stops.filter((stop: number) => stop !== normalizedItem)
         : [...filters.stops, normalizedItem];
